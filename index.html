@@ -8,27 +8,47 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
+<!--Start Of Header-->
 <body>
  <header>
   <h1 class="page-title">Taskinator</h1>
   <p>Click the button below to add a new task!</p>
   <button class="btn" id="save-task">Add Task</button>
  </header>
-
+ <!--End Of Header-->
   
+ <!--Start Of Task To Do-->
   <main class="page-content">
       <section class="task-list-wrapper">
           <h2 class="list-title">Tasks To Do</h2>
-          <ul class="task-list">
+         
+          <ul class="task-list" id="tasktodo">
+              <li class="task-item">A task is going to be added soon!</li>
               <li class="task-item">A task is going to be added soon!</li>
           </ul>
       </section>
   </main>
-
+ <!--End of Task To Do-->
+ 
+  <!--Start Of Footer-->
   <footer>
       &copy;2020 by Taskinator
   </footer>
+  <!--End of Footer-->
 
+ <!--Java Script Add Task-->
+  <script>
+  var listE1 = document.querySelector("#tasktodo");
+  var taskListE1 = document.createElement("li");
+  taskListE1.textContent ="This Is Another Task In Java";
+  taskListE1.className ="task-item";
+  listE1.appendChild(taskListE1);
+  </script>
+ <!--END of Java Script Add Task-->
+
+
+ <!--Link To Script-->
   <script src="./assets/js/script.js"></script>
+ <!--End Of Script-->
  </body>
 </html>
