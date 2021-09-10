@@ -13,6 +13,14 @@ var tasksToDoE1 = document.querySelector("#tasks-to-do");
         name: taskNameInput,
         type: taskTypeInput 
     };
+
+    //Check if Input Values Are Empty
+     if(!taskNameInput || !taskTypeInput) {
+         alert("You need to fill out the task form!");
+         return false;
+     }
+
+     formE1.reset();
     //Send it as an Argument to CreateTaskE1
     createTaskE1(taskDataObj);
 };
