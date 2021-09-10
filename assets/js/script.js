@@ -17,8 +17,7 @@ var tasksToDoE1 = document.querySelector("#tasks-to-do");
    taskInfoE1.className = "task-info";
    //ADD HTML CONTENT
    taskInfoE1.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'>" + taskTypeInput + "</span>";
-    
-    listItemE1.appendChild(taskInfoE1);
+   listItemE1.appendChild(taskInfoE1);
 
     //ADD entire list item TO LIST
     tasksToDoE1.appendChild(listItemE1);
