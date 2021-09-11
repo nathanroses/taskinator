@@ -104,22 +104,40 @@ var taskIdCounter = 0;
   };
 
     
-  
-    
-    //Delete Button 
+  //Button Function 
      var taskButtonHandler = function(event) {
-         console.log(event.target);
-
-         if (event.target.matches(".delete-btn")) {
+    //Get Target Element From Event
+      var targetE1 = event.target;
+     
+      //Edit Button Clicked
+     if (targetE1.matches(".edit-btn")) {
+         var taskId = targetE1.getAttribute("data-task-id");
+         editTask(taskId);
+     }
+     
+      //Delete Button Clicked
+      else if (targetE1.matches(".delete-btn")) {
            //Get the Element Task Id
-           var taskId = event.target.getAttribute("data-task-id");
+           var taskId = targetE1.getAttribute("data-task-id");
            deleteTask(taskId);
          }
      };
-    //Select Query
+  
+     
+     
+     
+     //Delete Function
      var deleteTask = function(taskId) {
          var taskSelected = document.querySelector(".task-item[data-task-id='"+ taskId + "']");
          taskSelected.remove();
+     };
+
+     //Edit Function
+     var editTask = function(taskId) {
+         console.log("editing task #" + taskId);
+
+         //Get Task List Item Element
+         var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
      };
 
  formE1.addEventListener("submit", taskFormHandler); 
