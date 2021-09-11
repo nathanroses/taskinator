@@ -135,9 +135,18 @@ var taskIdCounter = 0;
      //Edit Function
      var editTask = function(taskId) {
          console.log("editing task #" + taskId);
-
+         
          //Get Task List Item Element
          var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+         //Get Content From Task Name and Type
+         var taskName = taskSelected.querySelector("h3.task-name").textContent;
+         var taskType = taskSelected.querySelector("span.task-type").textContent;
+         //Query Selector
+         document.querySelector("input[name='task-name']").value = taskName;
+         document.querySelector("select[name='task-type']").value = taskType;
+         document.querySelector("#save-task").textContent = "Save Task";
+        
+         formE1.setAttribute("data-task-id", taskId);
      };
 
  formE1.addEventListener("submit", taskFormHandler); 
