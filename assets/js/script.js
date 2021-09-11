@@ -1,9 +1,12 @@
 var formE1 = document.querySelector("#task-form");
 var tasksToDoE1 = document.querySelector("#tasks-to-do");
-var pageContentE1 = document.querySelector("#page-content")
+var pageContentE1 = document.querySelector("#page-content");
+var tasksInProgressE1 = document.querySelector("#task-in-progress");
+var tasksCompletedE1 = document.querySelector("#tasks-completed");
 var taskIdCounter = 0;
 
- var taskFormHandler = function(event) {
+ 
+var taskFormHandler = function(event) {
      event.preventDefault();
 
     var taskNameInput = document.querySelector("input[name='task-name']").value;
