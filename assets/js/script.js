@@ -77,9 +77,8 @@ var taskFormHandler = function(event) {
 
     //Increase Task Counter for Next Unique Id
     taskIdCounter++;
-    //LOG
-    console.log(taskDataObj);
-    console.log(taskDataObj.status);
+    //ETC
+    saveTasks();
  };
 
  // Task Actions and Button Menu for Task
@@ -149,6 +148,8 @@ var taskFormHandler = function(event) {
  
         formE1.removeAttribute("data-task-id");
         document.querySelector("#save-task").textContent = "Add Task";
+            //ETC
+             saveTasks();
     };
 
     
@@ -197,7 +198,8 @@ var taskFormHandler = function(event) {
               tasks[i].status = statusValue;
             }
           }
-          console.log(tasks);
+          //ETC
+          saveTasks();
    };
    
     //Edit Function
@@ -221,7 +223,7 @@ var taskFormHandler = function(event) {
     };
 
          
-     //Delete Function
+
      var deleteTask = function(taskId) {
         
        console.log(taskId);
@@ -239,8 +241,17 @@ var taskFormHandler = function(event) {
         }
         //reassign task array to be the same as the updated task array
         tasks = updatedTaskArr;
+        //ETC
+        saveTasks();
 
     };
+
+    
+
+    //Save Function
+      var saveTasks = function() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
 
 
 
