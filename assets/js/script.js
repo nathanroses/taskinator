@@ -223,7 +223,7 @@ var taskFormHandler = function(event) {
     };
 
          
-
+    //Delete Task Function
      var deleteTask = function(taskId) {
         
        console.log(taskId);
@@ -248,10 +248,29 @@ var taskFormHandler = function(event) {
 
     
 
-    //Save Function
+    //Save Task Function
       var saveTasks = function() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
-      }
+      };
+
+
+    //Load Task Function
+      var loadTasks = function() {
+        var savedTasks = localStorage.getItem("tasks");
+        //if there are no task set task to an empty array and return the function
+        if (!savedTasks) {
+          return false;
+        }
+        console.log("Saved tasks found!");
+
+        //put array of objects
+        savedTasks = JSON.parse(savedTasks);
+
+        //loop saved task array
+        for (var i = 0; i < savedTasks.length; i++) {
+          createTaskE1(savedTasks[i]);
+        }
+      };
 
 
 
@@ -261,4 +280,6 @@ var taskFormHandler = function(event) {
  pageContentE1.addEventListener("click", taskButtonHandler);
  
  pageContentE1.addEventListener("change", taskStatusChangeHandler);
+
+ loadTasks();
  
