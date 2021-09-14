@@ -6,7 +6,7 @@ a website which you can add and move task to certain columns keeping you organiz
 
 ## Built
 
-- HTML 5
+- HTML
 - CSS
 - JAVASCRIPT
 
