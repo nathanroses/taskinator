@@ -4,72 +4,115 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taskinator</title>
+    <title>Taskinator | Task Management Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
 </head>
-
-<!--Start Of Header-->
 <body>
- <header>
-  <h1 class="page-title">Taskinator</h1>
-  <p>Click the button below to add a new task!</p>
-  
-   <form id="task-form">
-       <div class="form-group">
-        <input type="text" name="task-name" placeholder="Enter Task Name" />
-       </div>
-      
-       <div class="form-group">
-        <select name="task-type" class="select-dropdown">
-            <option value="" disabled selected>Pick a Task Type</option>
-            <option value="Print">Print</option>
-            <option value="Web">Web</option>
-            <option value="Mobile">Mobile</option>
-        </select>
-       </div>
-      
-       <div class="form-group">
-         <button class="btn" id="save-task" type="submit">Add Task</button>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <h1 class="page-title">
+                <i class="fas fa-tasks"></i> Taskinator
+            </h1>
+            <p>A simple and intuitive task management tool to organize your work efficiently.</p>
+            
+            <!-- Task Form -->
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name" name="task-name" placeholder="Enter your task" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="task-type">Task Type</label>
+                    <select name="task-type" id="task-type" class="select-dropdown" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Print">Print</option>
+                        <option value="Web">Web</option>
+                        <option value="Mobile">Mobile</option>
+                    </select>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-add" id="save-task">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+            </form>
         </div>
-    </form>
-
- </header>
- <!--End Of Header-->
-  
- 
- <!--MAIN CONTENT-->
-  <main class="page-content" id="page-content">
+    </header>
     
-    <!--Task To Do-->
-      <section class="task-list-wrapper">
-          <h2 class="list-title">Tasks To Do</h2>    
-         <ul class="task-list" id="tasks-to-do"> </ul>
-
-      </section>
-
-   <!--Task in Progress-->
-       <section class="task-list-wrapper">
-           <h2 class="list-title">Task in Progress</h2>
-           <ul class="task-list" id="tasks-in-progress"></ul>
-       </section>
-
-          <!--Task Complete-->
-          <section class="task-list-wrapper">
-            <h2 class="list-title">Task Completed</h2>
-            <ul class="task-list" id="tasks-completed"></ul>
-        </section>
-  </main>
-<!--END OF MAIN CONTENT-->
- 
-  <!--Start Of Footer-->
-  <footer>
-      &copy;2020 by Taskinator
-  </footer>
-  <!--End of Footer-->
-
-
- <!--Link To Script-->
-  <script src="./assets/js/script.js"></script>
- <!--End Of Script-->
- </body>
+    <!-- Main Content -->
+    <main class="page-content" id="page-content">
+        <div class="tasks-container">
+            <!-- Tasks To Do -->
+            <section class="task-list-wrapper">
+                <div class="list-header">
+                    <h2 class="list-title">
+                        <i class="far fa-square"></i> Tasks To Do
+                        <span class="task-count" id="to-do-count">0</span>
+                    </h2>
+                </div>
+                <ul class="task-list" id="tasks-to-do">
+                    <!-- Empty state for To Do list -->
+                    <div class="empty-state" id="empty-todo">
+                        <div class="empty-state-icon">
+                            <i class="far fa-clipboard"></i>
+                        </div>
+                        <p class="empty-state-text">No tasks to do yet. Add a new task to get started!</p>
+                    </div>
+                </ul>
+            </section>
+            
+            <!-- Tasks In Progress -->
+            <section class="task-list-wrapper">
+                <div class="list-header">
+                    <h2 class="list-title">
+                        <i class="fas fa-spinner"></i> In Progress
+                        <span class="task-count" id="in-progress-count">0</span>
+                    </h2>
+                </div>
+                <ul class="task-list" id="tasks-in-progress">
+                    <!-- Empty state for In Progress list -->
+                    <div class="empty-state" id="empty-progress">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <p class="empty-state-text">Move tasks here when you start working on them.</p>
+                    </div>
+                </ul>
+            </section>
+            
+            <!-- Completed Tasks -->
+            <section class="task-list-wrapper">
+                <div class="list-header">
+                    <h2 class="list-title">
+                        <i class="fas fa-check-square"></i> Completed
+                        <span class="task-count" id="completed-count">0</span>
+                    </h2>
+                </div>
+                <ul class="task-list" id="tasks-completed">
+                    <!-- Empty state for Completed list -->
+                    <div class="empty-state" id="empty-completed">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <p class="empty-state-text">Completed tasks will appear here. Keep up the good work!</p>
+                    </div>
+                </ul>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Taskinator | Designed by <a href="#" target="_blank">Your Name</a></p>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+</body>
 </html>
