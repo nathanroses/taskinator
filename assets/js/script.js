@@ -79,6 +79,9 @@ var createTaskEl = function(taskDataObj) {
 
     // Increase counter for next task
     taskIdCounter++;
+
+    // Initialize drag and drop for the new task
+    initializeDragAndDrop();
 };
 
 // Create the action buttons for a task
@@ -292,6 +295,89 @@ var updateTaskCounts = function() {
     toDoCountEl.textContent = todoCount;
     inProgressCountEl.textContent = inProgressCount;
     completedCountEl.textContent = completedCount;
+};
+// Add this immediately before your event listeners
+var initializeDragAndDrop = function() {
+  // Set up drag events for all task items
+  var taskItems = document.querySelectorAll('.task-item');
+  var taskLists = document.querySelectorAll('.task-list');
+  
+  // Add event listeners to each task item
+  taskItems.forEach(function(item) {
+    // Make the item draggable
+    item.setAttribute('draggable', 'true');
+    
+    // Add dragstart event listener
+    item.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', item.getAttribute('data-task-id'));
+      setTimeout(function() {
+        item.classList.add('task-dragging');
+      }, 0);
+    });
+    
+    // Add dragend event listener
+    item.addEventListener('dragend', function() {
+      item.classList.remove('task-dragging');
+    });
+  });
+  
+  // Add event listeners to each task list (column)
+  taskLists.forEach(function(list) {
+    // When dragging over a list
+    list.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      list.classList.add('task-drop-zone');
+    });
+    
+    // When leaving a list
+    list.addEventListener('dragleave', function() {
+      list.classList.remove('task-drop-zone');
+    });
+    
+    // When dropping on a list
+    list.addEventListener('drop', function(e) {
+      e.preventDefault();
+      list.classList.remove('task-drop-zone');
+      
+      // Get the task ID from the data transfer
+      var taskId = e.dataTransfer.getData('text/plain');
+      var taskItem = document.querySelector('.task-item[data-task-id="' + taskId + '"]');
+      
+      if (!taskItem) return;
+      
+      // Determine which list it was dropped on and update status
+      var newStatus;
+      var statusSelect;
+      
+      if (list.id === 'tasks-to-do') {
+        newStatus = 'to do';
+      } else if (list.id === 'tasks-in-progress') {
+        newStatus = 'in progress';
+      } else if (list.id === 'tasks-completed') {
+        newStatus = 'completed';
+      }
+      
+      // Move the task to the new list
+      list.appendChild(taskItem);
+      
+      // Update the select element to match the new status
+      statusSelect = taskItem.querySelector('.select-status');
+      statusSelect.value = newStatus;
+      
+      // Update task in array
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === parseInt(taskId)) {
+          tasks[i].status = newStatus;
+        }
+      }
+      
+      // Save to localStorage
+      saveTasks();
+      
+      // Update task counts
+      updateTaskCounts();
+    });
+  });
 };
 
 // Event listeners
