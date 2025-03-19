@@ -235,6 +235,31 @@ footer {
   font-size: 2rem;
 }
 
+/* Drag and drop styles */
+.task-item[draggable="true"] {
+  cursor: move;
+  cursor: grab;
+}
+
+.task-item[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.task-dragging {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+.task-drop-zone {
+  background-color: rgba(68, 233, 255, 0.1);
+  border: 2px dashed var(--primary);
+}
+
+/* Add a subtle transition for smoother visuals */
+.task-item {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
 /* Responsive design */
 @media screen and (max-width: 980px) {
   form .form-group {
