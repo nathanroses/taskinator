@@ -1,3 +1,4 @@
+/* Base Styles for Taskinator */
 * {
   box-sizing: border-box;
 }
@@ -33,8 +34,7 @@ header p {
   font-size: 2rem;
 }
 
-p,
-li {
+p, li {
   font-size: 1.6rem;
 }
 
@@ -103,6 +103,22 @@ footer {
   border: 2px solid var(--grey);
 }
 
+.task-count {
+  background-color: var(--primary);
+  color: var(--grey);
+  border-radius: 50px;
+  padding: 2px 8px;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* Component Styles for Taskinator */
 .task-item {
   color: var(--grey);
   padding: 15px 15px;
@@ -121,6 +137,7 @@ footer {
   color: var(--secondary);
   font-size: 1.55rem;
 }
+
 .task-actions {
   display: flex;
   flex-wrap: wrap;
@@ -151,6 +168,7 @@ footer {
   box-shadow: 0 2px var(--grey);
   top: -2px;
 }
+
 .btn:active {
   box-shadow: 0 0px var(--grey);
   top: 0;
@@ -210,12 +228,14 @@ footer {
   color: #222;
   outline: none;
 }
+
 .select-dropdown option,
 .select-status option {
   font-weight: normal;
   font-size: 2rem;
 }
 
+/* Responsive design */
 @media screen and (max-width: 980px) {
   form .form-group {
     flex: 1 100%;
@@ -228,5 +248,4 @@ footer {
   .task-list-wrapper {
     flex-basis: 100%;
   }
-
 }
